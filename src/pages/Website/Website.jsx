@@ -88,25 +88,7 @@ export default function Website() {
   const videoRef = useRef(null)
   
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Play video when in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play().catch(err => console.error("Video autoplay failed:", err));
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
+    // No imperative play calls; rely on autoplay + muted + playsInline
   }, []);
   
   const [hoverSound] = useState(() => {
@@ -179,9 +161,8 @@ export default function Website() {
             muted
             playsInline
             preload="none"
-          >
-            <source src="/src/assets/japanese-video.mp4" type="video/mp4" />
-          </video>
+            src="/assets/videos/japanese-video.mp4"
+          />
           <div className="website-hero-video-overlay" />
         </div>
         <motion.div

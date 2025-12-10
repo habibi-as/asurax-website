@@ -3,7 +3,6 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motio
 import DocumentButton from '../../components/DocumentButton.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 import PageHeaderLogo from '../../components/PageHeaderLogo.jsx'
-import photoRealmVideo from '../../assets/photo-realm.mp4'
 import {
   loadAssets,
   loadTextFile,
@@ -95,42 +94,23 @@ export default function Photo() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Play video when in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play().catch(err => console.error("Video autoplay failed:", err));
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
+    // No imperative play calls; rely on autoplay + muted + playsInline
   }, []);
 
   return (
     <div className="photo-page" ref={containerRef} style={{ position: 'relative', zIndex: 5 }}>
       {/* Cinematic background with video */}
       <div className="photo-bg">
-        <video
-          ref={videoRef}
-          className="bg-video photo-bg-video background-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-        >
-          <source src={photoRealmVideo} type="video/mp4" />
-        </video>
+          <video
+            ref={videoRef}
+            className="bg-video photo-bg-video background-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            src="/assets/videos/photo-realm.mp4"
+          />
         <div className="photo-bg-video-overlay" />
         <motion.div 
           className="photo-bg-layer photo-bg-layer-1"

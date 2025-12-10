@@ -9,7 +9,6 @@ import { loadSlim } from "@tsparticles/slim";
 import DocumentButton from "../../components/DocumentButton.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import PageHeaderLogo from "../../components/PageHeaderLogo.jsx";
-import videoRealmVideo from "../../assets/vedio-realm.mp4";
 import "./Video.css";
 
 // ASURAX: Rainforest particle options
@@ -69,25 +68,7 @@ export default function Video() {
   };
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Play video when in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play().catch(err => console.error("Video autoplay failed:", err));
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
+    // No imperative play calls; rely on autoplay + muted + playsInline
   }, []);
 
   const categories = [
@@ -118,9 +99,8 @@ export default function Video() {
           muted
           playsInline
           preload="none"
-        >
-          <source src={videoRealmVideo} type="video/mp4" />
-        </video>
+          src="/assets/videos/vedio-realm.mp4"
+        />
         <div className="video-bg-video-overlay" />
         <div className="rainforest-bg-image" />
 

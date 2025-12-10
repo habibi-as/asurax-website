@@ -3,8 +3,8 @@ import MetallicPaint, { parseLogoImage } from "../Bits/MetallicPaint"; // adjust
 import LiquidEther from "../Bits/LiquidEther"; // your existing background (keeps liquid ether)
 import "./HeroMetallic.css";
 
-// Use the local asset path you provided (adjust filename if necessary)
-import logoPath from "../../assets/lasurax-metallic.svg";
+// Use the public logo path
+const logoPath = "/assets/logos/lasurax-metallic.png";
 
 /**
  * Helper: load image from url and draw onto a canvas

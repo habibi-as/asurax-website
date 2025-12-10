@@ -5,7 +5,6 @@ import { loadSlim } from "@tsparticles/slim";
 import DocumentButton from '../../components/DocumentButton.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 import PageHeaderLogo from '../../components/PageHeaderLogo.jsx'
-import soundRealmVideo from '../../assets/sound-realm.mp4'
 import './Sound.css'
 
 export default function Sound() {
@@ -20,25 +19,7 @@ export default function Sound() {
   };
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Play video when in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play().catch(err => console.error("Video autoplay failed:", err));
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
+    // No imperative play calls; rely on autoplay + muted + playsInline
   }, []);
 
   const tracks = [
@@ -115,9 +96,8 @@ export default function Sound() {
           muted
           playsInline
           preload="none"
-        >
-          <source src={soundRealmVideo} type="video/mp4" />
-        </video>
+          src="/assets/videos/sound-realm.mp4"
+        />
         <div className="sound-bg-video-overlay" />
         <div className="sound-particles">
           <Particles id="tsparticles-sound" init={particlesInit} options={particleOptions} />

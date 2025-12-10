@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import MetallicPaint from "../../components/Bits/MetallicPaint.jsx";
 import LiquidEther from "../../components/Bits/LiquidEther/LiquidEther.jsx";
-import logoFile from "../../assets/lasurax-metallic.png";
+const logoFile = "/assets/logos/lasurax-metallic.png";
 import "./Home.css";
 
 // Floating Particles Component - Reduced to 8 for better performance
