@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { 
+  overflow-x: hidden !important; 
+  min-height: 100vh;
+  width: 100%;
+  padding-bottom: env(safe-area-inset-bottom);
+  height: 100%;
+  scroll-behavior: smooth;
+}
+body { 
+  margin: 0;
+  overflow-x: hidden !important;
+}
+#root { 
+  min-height: 100vh;
+  overflow-x: hidden !important;
+}
+.full-screen { width: 100vw; min-height: 100vh; }
+
+/* ASURAX: Page Header Logo */
+.page-header-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px; /* space below navbar */
+  margin-bottom: 40px;
+}
+
+.page-header-logo-img {
+  width: 120px;
+  height: auto;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.45));
+  pointer-events: none;
+}
+
+/* Global video background class */
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45 !important;
+}
+
+/* MOBILE AUTO-SCALE MODE */
+@media (max-width: 768px) {
+  * {
+    transform-origin: center top !important;
+  }
+
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  .section, .hero, .gaming-content, .game-section {
+    padding: 16px !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+  }
+
+  img, video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix clipped buttons */
+  .cta, button, a {
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+  }
+
+  /* Fix floating elements in Gaming page */
+  .gaming-sidebar {
+    position: relative !important;
+    width: 100% !important;
+    transform: none !important;
+    margin-bottom: 12px;
+  }
+
+  .gaming-content {
+    width: 100% !important;
+    transform: none !important;
+  }
+}
+
+/* Force elements not to hide offscreen */
+body,
+main,
+.hero-section,
+.gallery-grid,
+.gaming-featured-scroll {
+  overflow-x: hidden !important;
+}
