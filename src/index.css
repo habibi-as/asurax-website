@@ -2,21 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { 
-  overflow-x: hidden !important; 
-  min-height: 100vh;
-  width: 100%;
-  padding-bottom: env(safe-area-inset-bottom);
-  height: 100%;
+:root {
+  --scroll-behavior: smooth;
   scroll-behavior: smooth;
 }
+
+html, body { 
+  overflow-x: hidden !important; 
+  overflow-y: auto !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
 body { 
   margin: 0;
   overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
 #root { 
   min-height: 100vh;
   overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+/* Ensure fixed position elements don't block scrolling */
+[style*="position: fixed"] {
+  pointer-events: none !important;
+}
+
+/* Smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
 }
 .full-screen { width: 100vw; min-height: 100vh; }
 
