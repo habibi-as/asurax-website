@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asurax.netlify.app/sitemap.xml
