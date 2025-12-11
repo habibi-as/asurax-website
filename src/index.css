@@ -7,40 +7,73 @@
   scroll-behavior: smooth;
 }
 
-html, body { 
-  overflow-x: hidden !important; 
-  overflow-y: auto !important;
+/* Base reset for smooth scrolling with Lenis */
+html {
   width: 100%;
-  height: auto !important;
-  min-height: 100vh;
-  padding-bottom: env(safe-area-inset-bottom);
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-body { 
-  margin: 0;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-#root { 
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   min-height: 100vh;
-  overflow-x: hidden !important;
-  overflow-y: visible !important;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  background: #000;
+  color: #fff;
 }
 
-/* Ensure fixed position elements don't block scrolling */
-[style*="position: fixed"] {
+/* Ensure fixed/absolute elements don't block scrolling */
+[style*="position: fixed"],
+[style*="position:fixed"],
+.fixed,
+.absolute {
   pointer-events: none !important;
 }
 
-/* Smooth scrolling for all elements */
-* {
+/* Canvas elements should not block pointer events */
+canvas {
+  pointer-events: none !important;
+}
+
+/* Smooth scrolling for native elements */
+html {
   scroll-behavior: smooth;
+}
+
+/* Disable smooth scrolling when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Ensure full viewport elements don't cause scroll issues */
+.full-screen {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Fix for WebKit browsers to prevent elastic scrolling */
+html, body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+}
+
+/* Ensure root element doesn't cause scroll issues */
+#root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 }
 .full-screen { width: 100vw; min-height: 100vh; }
 

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "framer-motion";
+import useLenis from "./hooks/useLenis";
 
 import AsuraxMenuHorizontal from "./components/Bits/AsuraxMenuHorizontal.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -31,6 +32,9 @@ const pageTransition = {
 
 export default function App() {
   const location = useLocation();
+  
+  // Initialize Lenis for smooth scrolling
+  useLenis();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
