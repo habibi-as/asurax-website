@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 User-agent: *
 Allow: /
 
 Sitemap: https://asurax.netlify.app/sitemap.xml
+=======
+User-agent: *
+Allow: /
+
+Sitemap: https://asurax.netlify.app/sitemap.xml
+>>>>>>> 4e303f2 (Added sitemap, robots, SEO updates, and cleaned index.html)
